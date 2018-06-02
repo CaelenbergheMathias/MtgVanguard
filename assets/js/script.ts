@@ -13,6 +13,11 @@ function selectXRandomCards(x:number)
     return chosenCards;
 }
 
+function addCardsToScreen(chosenCards:object[])
+{
+    //chosenCards.forEach()
+}
+
 function registerSW()
 {
     if ('serviceWorker' in navigator) {

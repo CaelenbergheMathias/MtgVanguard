@@ -7,6 +7,9 @@ function selectXRandomCards(x) {
     }
     return chosenCards;
 }
+function addCardsToScreen(chosenCards) {
+    //chosenCards.forEach()
+}
 function registerSW() {
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
