@@ -84,7 +84,9 @@ function fetchVanguards()
             document.getElementById("vanguards").appendChild(ul);
         });
     }).catch(function (err) {
-        console.log(err)
+        let p = document.createElement("p");
+        p.innerText = "Could Not Fetch The Cards Scryfall Could be Offline ATM";
+        document.getElementById("vanguards").appendChild(p);
 
     })
 }
