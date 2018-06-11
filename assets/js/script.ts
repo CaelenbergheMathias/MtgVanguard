@@ -7,15 +7,35 @@ function selectXRandomCards(x:number)
     for(let i:number = 0; i<x; i++)
     {
         let index = Math.floor((Math.random() * 10) );
-        chosenCards.push(cards[index]);
+        if(chosenCards.indexOf(cards[index])<0)
+        {
+            chosenCards.push(cards[index]);
+        }
+        else{
+            i--;
+        }
+
     }
 
     return chosenCards;
 }
 
-function addCardsToScreen(chosenCards:object[])
+function addXCardsToScreen(x:number)
 {
-    //chosenCards.forEach()
+    let chosenCards:object[] = selectXRandomCards(x);
+    let ul = document.createElement("ul");
+
+    chosenCards.forEach(function (card) {
+        let li = document.createElement("li");
+        let img = document.createElement("img");
+        img.src = `${card.image_uris.normal}`;
+        li.appendChild(img);
+        ul.appendChild(li);
+
+
+
+    });
+    document.getElementById("vanguards").appendChild(ul);
 }
 
 function registerSW()
@@ -40,6 +60,29 @@ function fetchVanguards()
     }).then(function (json) {
         cards = json.data;
         console.log(cards)
+    }).then(function () {
+        document.getElementById("1").addEventListener("click",function () {
+            document.getElementById("vanguards").innerHTML="";
+
+            addXCardsToScreen(1);
+        });
+        document.getElementById("2").addEventListener("click",function () {
+            document.getElementById("vanguards").innerHTML="";
+            addXCardsToScreen(3);
+        });
+        document.getElementById("3").addEventListener("click",function () {
+            document.getElementById("vanguards").innerHTML="";
+
+            let ul = document.createElement("ul");
+            cards.forEach(function (card) {
+                let li = document.createElement("li");
+                let img = document.createElement("img");
+                img.src = `${card.image_uris.normal}`;
+                li.appendChild(img);
+                ul.appendChild(li);
+            });
+            document.getElementById("vanguards").appendChild(ul);
+        });
     })
 }
 
@@ -47,5 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
     registerSW();
     console.log('loaded');
     fetchVanguards();
+
 
 });

@@ -3,12 +3,26 @@ function selectXRandomCards(x) {
     var chosenCards = [];
     for (var i = 0; i < x; i++) {
         var index = Math.floor((Math.random() * 10));
-        chosenCards.push(cards[index]);
+        if (chosenCards.indexOf(cards[index]) < 0) {
+            chosenCards.push(cards[index]);
+        }
+        else {
+            i--;
+        }
     }
     return chosenCards;
 }
-function addCardsToScreen(chosenCards) {
-    //chosenCards.forEach()
+function addXCardsToScreen(x) {
+    var chosenCards = selectXRandomCards(x);
+    var ul = document.createElement("ul");
+    chosenCards.forEach(function (card) {
+        var li = document.createElement("li");
+        var img = document.createElement("img");
+        img.src = "" + card.image_uris.normal;
+        li.appendChild(img);
+        ul.appendChild(li);
+    });
+    document.getElementById("vanguards").appendChild(ul);
 }
 function registerSW() {
     if ('serviceWorker' in navigator) {
@@ -29,6 +43,27 @@ function fetchVanguards() {
     }).then(function (json) {
         cards = json.data;
         console.log(cards);
+    }).then(function () {
+        document.getElementById("1").addEventListener("click", function () {
+            document.getElementById("vanguards").innerHTML = "";
+            addXCardsToScreen(1);
+        });
+        document.getElementById("2").addEventListener("click", function () {
+            document.getElementById("vanguards").innerHTML = "";
+            addXCardsToScreen(3);
+        });
+        document.getElementById("3").addEventListener("click", function () {
+            document.getElementById("vanguards").innerHTML = "";
+            var ul = document.createElement("ul");
+            cards.forEach(function (card) {
+                var li = document.createElement("li");
+                var img = document.createElement("img");
+                img.src = "" + card.image_uris.normal;
+                li.appendChild(img);
+                ul.appendChild(li);
+            });
+            document.getElementById("vanguards").appendChild(ul);
+        });
     });
 }
 document.addEventListener('DOMContentLoaded', function () {
