@@ -1,7 +1,6 @@
 
-
-header{
-  h1{
+header {
+  h1 {
     text-align: center;
     font-size: 2rem;
     padding-top: 1rem;
@@ -11,16 +10,23 @@ header{
 
 }
 
-.wrapper{
+.wrapper {
   margin-left: auto;
   margin-right: auto;
   width: 920px;
 
 }
 
-ol{
+ol {
   text-align: center;
-  li{
+  li {
+
 
   }
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

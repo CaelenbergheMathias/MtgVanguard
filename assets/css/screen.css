@@ -13,4 +13,9 @@ header h1 {
 ol {
   text-align: center; }
 
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
 /*# sourceMappingURL=screen.css.map */
