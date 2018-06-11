@@ -83,6 +83,9 @@ function fetchVanguards()
             });
             document.getElementById("vanguards").appendChild(ul);
         });
+    }).catch(function (err) {
+        console.log(err)
+
     })
 }
 
