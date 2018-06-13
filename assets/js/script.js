@@ -12,17 +12,41 @@ function selectXRandomCards(x) {
     }
     return chosenCards;
 }
-function addXCardsToScreen(x) {
-    var chosenCards = selectXRandomCards(x);
+function addCardsToScreen(cards) {
+    document.getElementById("vanguards").innerHTML = "";
     var ul = document.createElement("ul");
-    chosenCards.forEach(function (card) {
-        var li = document.createElement("li");
+    cards.forEach(function (card) {
+        var article = document.createElement("article");
         var img = document.createElement("img");
         img.src = "" + card.image_uris.normal;
-        li.appendChild(img);
+        article.appendChild(img);
+        var h2 = document.createElement("h2");
+        h2.innerText = card.name;
+        article.appendChild(h2);
+        var description = document.createElement("p");
+        description.innerText = card.oracle_text;
+        article.appendChild(description);
+        var handsize = document.createElement("h3");
+        handsize.innerText = "Handsize Modifier";
+        var hdescr = document.createElement("p");
+        hdescr.innerText = card.hand_modifier;
+        var life = document.createElement("h3");
+        life.innerText = "Life Modifier";
+        var lifedescr = document.createElement("p");
+        lifedescr.innerText = card.life_modifier;
+        article.appendChild(handsize);
+        article.appendChild(hdescr);
+        article.appendChild(life);
+        article.appendChild(lifedescr);
+        var li = document.createElement("li");
+        li.appendChild(article);
         ul.appendChild(li);
     });
     document.getElementById("vanguards").appendChild(ul);
+}
+function addXCardsToScreen(x) {
+    var chosenCards = selectXRandomCards(x);
+    addCardsToScreen(chosenCards);
 }
 function registerSW() {
     if ('serviceWorker' in navigator) {
@@ -45,24 +69,13 @@ function fetchVanguards() {
         console.log(cards);
     }).then(function () {
         document.getElementById("1").addEventListener("click", function () {
-            document.getElementById("vanguards").innerHTML = "";
             addXCardsToScreen(1);
         });
         document.getElementById("2").addEventListener("click", function () {
-            document.getElementById("vanguards").innerHTML = "";
             addXCardsToScreen(3);
         });
         document.getElementById("3").addEventListener("click", function () {
-            document.getElementById("vanguards").innerHTML = "";
-            var ul = document.createElement("ul");
-            cards.forEach(function (card) {
-                var li = document.createElement("li");
-                var img = document.createElement("img");
-                img.src = "" + card.image_uris.normal;
-                li.appendChild(img);
-                ul.appendChild(li);
-            });
-            document.getElementById("vanguards").appendChild(ul);
+            addCardsToScreen(cards);
         });
     }).catch(function (err) {
         var p = document.createElement("p");
