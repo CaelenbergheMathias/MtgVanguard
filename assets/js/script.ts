@@ -87,6 +87,24 @@ function addXCardsToScreen(x:number)
 //     }
 // }
 
+function addEventListeners()
+{
+    document.getElementById("1").addEventListener("click",function () {
+        addXCardsToScreen(1);
+    });
+    document.getElementById("2").addEventListener("click",function () {
+
+        addXCardsToScreen(2);
+    });
+    document.getElementById("3").addEventListener("click",function () {
+
+        addXCardsToScreen(3);
+    });
+    document.getElementById("4").addEventListener("click",function () {
+        addCardsToScreen(cards);
+    });
+}
+
 function fetchVanguards()
 {
     fetch("https://api.scryfall.com/cards/search?q=t:vanguard",{method:"Get"}).then(function (data) {
@@ -95,18 +113,7 @@ function fetchVanguards()
         cards = json.data;
         console.log(cards)
     }).then(function () {
-        document.getElementById("1").addEventListener("click",function () {
-
-
-            addXCardsToScreen(1);
-        });
-        document.getElementById("2").addEventListener("click",function () {
-
-            addXCardsToScreen(3);
-        });
-        document.getElementById("3").addEventListener("click",function () {
-            addCardsToScreen(cards);
-        });
+        addEventListeners();
     }).catch(function (err) {
         let p = document.createElement("p");
         p.innerText = "Could Not Fetch The Cards Scryfall Could be Offline ATM";
