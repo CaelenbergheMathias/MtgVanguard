@@ -20,19 +20,23 @@ header {
 
 nav{
   margin-bottom: 2.5rem;
-
+  ol{
+    li{
+      a{
+        text-decoration: none;
+        color: #000;
+        font-size: 1.2rem;
+        font-weight: bold;
+        padding: 0.5rem;
+        background-color: #a9a2a6;
+        border-radius: 1rem;
+      }
+    }
+  }
 }
 
 
-a{
-  text-decoration: none;
-  color: #000;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 0.5rem;
-  background-color: #a9a2a6;
-  border-radius: 1rem;
-}
+
 
 ol{
   display: flex;
@@ -81,5 +85,15 @@ li {
     }
     border-bottom: black;
     border-style: solid;
+  }
+}
+footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  p{
+    margin-bottom: 0.5rem;
   }
 }

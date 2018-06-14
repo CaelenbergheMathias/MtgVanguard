@@ -12,15 +12,14 @@ header h1 {
 
 nav {
   margin-bottom: 2.5rem; }
-
-a {
-  text-decoration: none;
-  color: #000;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 0.5rem;
-  background-color: #a9a2a6;
-  border-radius: 1rem; }
+  nav ol li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5rem;
+    background-color: #a9a2a6;
+    border-radius: 1rem; }
 
 ol {
   display: flex;
@@ -62,5 +61,13 @@ li article {
     font-weight: bold;
     font-size: 1.2rem;
     margin-bottom: 0.4rem; }
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  footer p {
+    margin-bottom: 0.5rem; }
 
 /*# sourceMappingURL=screen.css.map */
