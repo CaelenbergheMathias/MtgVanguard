@@ -2,7 +2,7 @@ var cards;
 function selectXRandomCards(x) {
     var chosenCards = [];
     for (var i = 0; i < x; i++) {
-        var index = Math.floor((Math.random() * 10));
+        var index = Math.floor((Math.random() * cards.length));
         if (chosenCards.indexOf(cards[index]) < 0) {
             chosenCards.push(cards[index]);
         }

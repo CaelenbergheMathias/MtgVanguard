@@ -6,7 +6,7 @@ function selectXRandomCards(x:number)
 
     for(let i:number = 0; i<x; i++)
     {
-        let index = Math.floor((Math.random() * 10) );
+        let index = Math.floor((Math.random() * cards.length) );
         if(chosenCards.indexOf(cards[index])<0)
         {
             chosenCards.push(cards[index]);
