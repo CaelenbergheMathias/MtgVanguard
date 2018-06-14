@@ -7,6 +7,7 @@ function selectXRandomCards(x:number)
     for(let i:number = 0; i<x; i++)
     {
         let index = Math.floor((Math.random() * cards.length) );
+        console.log(cards.length);
         if(chosenCards.indexOf(cards[index])<0)
         {
             chosenCards.push(cards[index]);
@@ -71,20 +72,20 @@ function addXCardsToScreen(x:number)
     addCardsToScreen(chosenCards)
 }
 
-function registerSW()
-{
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('sw.js').then(function(registration) {
-                // Registration was successful
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function(err) {
-                // registration failed :(
-                console.log('ServiceWorker registration failed: ', err);
-            });
-        });
-    }
-}
+// function registerSW()
+// {
+//     if ('serviceWorker' in navigator) {
+//         window.addEventListener('load', function() {
+//             navigator.serviceWorker.register('sw.js').then(function(registration) {
+//                 // Registration was successful
+//                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
+//             }, function(err) {
+//                 // registration failed :(
+//                 console.log('ServiceWorker registration failed: ', err);
+//             });
+//         });
+//     }
+// }
 
 function fetchVanguards()
 {
@@ -115,7 +116,7 @@ function fetchVanguards()
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    registerSW();
+    // registerSW();
     console.log('loaded');
     fetchVanguards();
 

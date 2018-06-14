@@ -28,6 +28,10 @@ img {
   align-items: center; }
 
 li article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 1.1rem;
   margin-bottom: 2rem;
   border-bottom: black;
@@ -37,6 +41,8 @@ li article {
     font-weight: bold;
     margin-bottom: 0.7rem; }
   li article p {
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
     margin-bottom: 0.8rem; }
   li article h3 {
     font-weight: bold;

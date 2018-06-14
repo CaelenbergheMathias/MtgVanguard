@@ -3,6 +3,7 @@ function selectXRandomCards(x) {
     var chosenCards = [];
     for (var i = 0; i < x; i++) {
         var index = Math.floor((Math.random() * cards.length));
+        console.log(cards.length);
         if (chosenCards.indexOf(cards[index]) < 0) {
             chosenCards.push(cards[index]);
         }
@@ -48,19 +49,20 @@ function addXCardsToScreen(x) {
     var chosenCards = selectXRandomCards(x);
     addCardsToScreen(chosenCards);
 }
-function registerSW() {
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-            navigator.serviceWorker.register('sw.js').then(function (registration) {
-                // Registration was successful
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function (err) {
-                // registration failed :(
-                console.log('ServiceWorker registration failed: ', err);
-            });
-        });
-    }
-}
+// function registerSW()
+// {
+//     if ('serviceWorker' in navigator) {
+//         window.addEventListener('load', function() {
+//             navigator.serviceWorker.register('sw.js').then(function(registration) {
+//                 // Registration was successful
+//                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
+//             }, function(err) {
+//                 // registration failed :(
+//                 console.log('ServiceWorker registration failed: ', err);
+//             });
+//         });
+//     }
+// }
 function fetchVanguards() {
     fetch("https://api.scryfall.com/cards/search?q=t:vanguard", { method: "Get" }).then(function (data) {
         return data.json();
@@ -84,7 +86,7 @@ function fetchVanguards() {
     });
 }
 document.addEventListener('DOMContentLoaded', function () {
-    registerSW();
+    // registerSW();
     console.log('loaded');
     fetchVanguards();
 });
